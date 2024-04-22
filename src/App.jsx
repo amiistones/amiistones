@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import { amiiboList } from './api/amiiboList.jsx';
+
 function App() {
   const [count, setCount] = useState(0)
 
