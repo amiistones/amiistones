@@ -1,0 +1,86 @@
+[
+	{
+		"tier": "S+",
+		"firstSlot": 1,
+		"lastSlot": 2,
+		"totalSidesPoints" : 12,
+	},
+	{
+		"tier": "S",
+		"firstSlot": 3,
+		"lastSlot": 6,
+		"totalSidesPoints" : 12,
+	},
+	{
+		"tier": "S-",
+		"firstSlot": 7,
+		"lastSlot": 10,
+		"totalSidesPoints" : 12,
+	},
+	{
+		"tier": "A+",
+		"firstSlot": 11,
+		"lastSlot": 14,
+		"totalSidesPoints": 10,
+	},
+	{
+		"tier": "A",
+		"firstSlot": 15,
+		"lastSlot": 23,
+		"totalSidesPoints": 10,
+	},
+	{
+		"tier": "A-",
+		"firstSlot": 24,
+		"lastSlot": 30,
+		"totalSidesPoints": 10,
+	},
+	{
+		"tier": "B+",
+		"firstSlot": 31,
+		"lastSlot": 39,
+		"totalSidesPoints": 8,
+	},
+	{
+		"tier": "B-",
+		"firstSlot": 40,
+		"lastSlot": 50,
+		"totalSidesPoints": 8,
+	},
+	{
+		"tier": "C+",
+		"firstSlot": 51,
+		"lastSlot": 60,
+		"totalSidesPoints": 6,
+	},
+	{
+		"tier": "C-",
+		"firstSlot": 61,
+		"lastSlot": 65,
+		"totalSidesPoints": 6,
+	},
+	{
+		"tier": "D+",
+		"firstSlot": 66,
+		"lastSlot": 69,
+		"totalSidesPoints": 5,
+	},
+	{
+		"tier": "D-",
+		"firstSlot": 70,
+		"lastSlot": 78,
+		"totalSidesPoints": 5,
+	},
+	{
+		"tier": "E+",
+		"firstSlot": 79,
+		"lastSlot": 81,
+		"totalSidesPoints": 4,
+	},
+	{
+		"tier": "E-",
+		"firstSlot": 82,
+		"lastSlot": 82,
+		"totalSidesPoints": 4,
+	},
+]
