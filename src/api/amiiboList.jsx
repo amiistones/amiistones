@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiURL = "https://amiiboapi.com/api/amiibo/";
 const fetchNumber = 10; // will be replace by "response.data.amiibo.length" in the loop one test phase is finished
 
-export const tmpAmiiboList = [];
+export const apiAmiiboList = [];
 
 await axios
 	.get(`${apiURL}?amiiboSeries=Super+Smash+Bros`)
@@ -14,7 +14,7 @@ await axios
 			delete amiiboData.head;
 			delete amiiboData.tail;
 			amiiboData.tier = 'F';
-			tmpAmiiboList.push({
+			apiAmiiboList.push({
 				data: amiiboData,
 				stone: {
 						hasSpecial: false,
@@ -28,7 +28,8 @@ await axios
 									South: 0,
 									West: 0
 									}
-						}
+						},
+				switchIndex: null
 			});
 		}
 	});

@@ -1,9 +1,11 @@
-import { tmpAmiiboList } from '../api/amiiboList.jsx';
+import { apiAmiiboList } from '../api/amiiboList.jsx';
 import tierDetails from '../data/smashBrosTierListSlots.json';
 import charactersList from '../data/smashBrosTierListCharacters.json';
 
+const BreakException = {};
 const sidesNames = ['North', 'East', 'South', 'West'];
-export const amiiboList = [];
+const characterNotFound = [];
+export const amiiboList = apiAmiiboList;
 
 function BuildPoints (amiibo, pointsLeft, number, minSides, maxSides) {
 
@@ -63,19 +65,40 @@ function BuildPoints (amiibo, pointsLeft, number, minSides, maxSides) {
 function DefineAmiiboTier (amiibo) {
 
 	let amiiboCharacterIndex = 0;
-	charactersList.forEach((character, index) => { //find the character index in charactersList
-		if (amiibo.data.name === character.characterName) {
-			amiiboCharacterIndex = index;
-		}
-	});
+	let characterFound = false;
 
-	tierDetails.forEach((tier) => { //foreach within the tiers to find the one
-		if (charactersList[amiiboCharacterIndex].characterRank >= tier.firstSlot &&
-			charactersList[amiiboCharacterIndex].characterRank <= tier.lastSlot) {
-			amiibo.data.tier = tier.name;
-			amiibo.stone.sidesPoints.total = tier.totalSidesPoints;
+	if (charactersList.indexOf(amiibo.data.name) === -1) {
+		try {
+			charactersList.forEach((character, index) => { //find the character index in charactersList
+				if (amiibo.data.name.startsWith(character.characterName)) {
+					amiiboCharacterIndex = index;
+					characterFound = true;
+				}
+			});
+		} catch (e) {
+			if (e !== BreakException) throw e;
 		}
-	});
+	} else {
+		amiiboCharacterIndex = charactersList.indexOf(amiibo.data.name);
+		characterFound = true;
+	}
+
+	if (characterFound === false) {
+		return -1;
+	}
+
+	try {
+		tierDetails.forEach((tier) => { //foreach within the tiers to find the one
+			if (charactersList[amiiboCharacterIndex].characterRank >= tier.firstSlot &&
+				charactersList[amiiboCharacterIndex].characterRank <= tier.lastSlot) {
+				amiibo.data.tier = tier.name;
+				amiibo.stone.sidesPoints.total = tier.totalSidesPoints;
+			}
+		});
+	} catch (e) {
+		if (e !== BreakException) throw e;
+	}
+	return amiiboCharacterIndex;
 }
 
 function DefineAmiiboSidesPoints (amiibo) {
@@ -108,13 +131,121 @@ function DefineAmiiboSidesPoints (amiibo) {
 		case 'E' :
 			BuildPoints(amiibo, pointsLeft, 0, 2, 2);
 			break;
+		default :
+			console.log(`ERROR: Unknown tier: "${amiibo.data.tier[0]}"`);
+			break;
+	}
+}
+
+function RotateAmiiboSidesPoints(amiibo, baseAmiibo, rotationType) {
+	switch (rotationType) {
+		case '180deg':
+			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['South'];
+			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['West'];
+			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['North'];
+			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['East'];
+			break;
+		case 'diagonal':
+			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['East'];
+			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['North'];
+			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['West'];
+			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['South'];
+			break;
+		case undefined:
+			console.log(`ERROR: Undefined rotation on "${amiibo.data.name}"`);
+			break;
+		default:
+			console.log(`ERROR: Unknown rotation: "${rotationType}"`);
+			break;
+	}
+}
+
+function SpecificRotations(amiibo) {
+	if (amiibo.data.name === "Alex") {
+		amiiboList.forEach((character) => {
+			if(character.data.name.startsWith("Steve")) {
+				RotateAmiiboSidesPoints(amiibo, character, 'diagonal');
+				throw BreakException;
+			}
+		});
+	}
+
+	if (amiibo.data.name === "Pyra") {
+		amiiboList.forEach((character) => {
+			if(character.data.name.startsWith("Mythra")) {
+				RotateAmiiboSidesPoints(amiibo, character, 'diagonal');
+			}
+		})
+	}
+
+	if (amiibo.data.name.endsWith(" - Player 2")) {
+		amiiboList.forEach((character) => {
+			if(character.data.name.startsWith(amiibo.data.name.split(' ')[0]) &&
+				character !== amiibo) {
+				RotateAmiiboSidesPoints(amiibo, character, '180deg');
+				throw BreakException;
+			}
+		});
+	}
+	else {
+		let baseAmiibo = -1;
+		charactersList.forEach((c) => {
+			if (amiibo.data.name.startsWith(c.characterName) &&
+				c.isEcho === true) {
+				amiiboList.forEach((character) => {
+					if(character.data.name.startsWith(c.basedOn)) {
+						RotateAmiiboSidesPoints(amiibo, character, '180deg');
+						throw BreakException;
+					}
+				});
+			}
+		});
+	}
+}
+
+function DefineAegisSwitch() {
+	let indexPyra = -1;
+	let indexMythra = -1;
+	
+	try {
+		amiiboList.forEach((amiibo) => {
+			if (indexPyra !== -1 && indexMythra !== -1) {
+				throw BreakException;
+			}
+			if (amiibo.data.name === "Pyra") {
+				indexPyra = amiiboList.indexOf(amiibo);
+			}
+			if (amiibo.data.name === "Mythra") {
+				indexMythra = amiiboList.indexOf(amiibo);
+			}
+		});
+	} catch (e) {
+		if (e !== BreakException) throw e;
+	}
+
+	if (indexPyra !== -1 && indexMythra !== -1) {
+		amiiboList[indexPyra].switchIndex = indexMythra;
+		amiiboList[indexMythra].switchIndex = indexPyra;
 	}
 }
 
 
-tmpAmiiboList.forEach((amiibo) => { //foreach amiibo fetched
-	DefineAmiiboTier(amiibo);
-	DefineAmiiboSidesPoints(amiibo);
+amiiboList.forEach((amiibo) => { //foreach amiibo fetched
+	const characterIndex = DefineAmiiboTier(amiibo);
+	if (characterIndex === -1) {
+		characterNotFound.push(amiibo);
+	} else {
+		DefineAmiiboSidesPoints(amiibo);
+	}
 });
 
-console.log(tmpAmiiboList);
+
+amiiboList.forEach((amiibo) => { //foreach amiibo for specific points table
+	try {
+		SpecificRotations (amiibo);
+	} catch (e) {
+		if (e !== BreakException) throw e;
+	}
+});
+
+DefineAegisSwitch();
