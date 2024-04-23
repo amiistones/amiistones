@@ -3,9 +3,9 @@ import axios from 'axios';
 const apiURL = "https://amiiboapi.com/api/amiibo/";
 const fetchNumber = 10; // will be replace by "response.data.amiibo.length" in the loop one test phase is finished
 
-export const amiiboList = [];
+export const tmpAmiiboList = [];
 
-axios
+await axios
 	.get(`${apiURL}?amiiboSeries=Super+Smash+Bros`)
 	.then((response) => {
 		let amiiboData = '';
@@ -14,7 +14,7 @@ axios
 			delete amiiboData.head;
 			delete amiiboData.tail;
 			amiiboData.tier = 'F';
-			amiiboList.push({
+			tmpAmiiboList.push({
 				data: amiiboData,
 				stone: {
 						hasSpecial: false,
@@ -22,6 +22,7 @@ axios
 						startTeam: null,
 						teamColor: null,
 						sidesPoints: {
+									total: null,
 									North: 0,
 									East: 0,
 									South: 0,
