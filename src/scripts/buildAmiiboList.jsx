@@ -24,7 +24,8 @@ function BuildPoints (amiibo, pointsLeft, number, minSides, maxSides) {
 
 		while (pointsLeft !== 0) {
 			let thatSide = Math.floor(Math.random() * 4);
-			if (amiibo.stone.sidesPoints[sidesNames[thatSide]] <= number &&
+			if ((amiibo.stone.sidesPoints[sidesNames[thatSide]] < number && number >= 3) ||
+				(amiibo.stone.sidesPoints[sidesNames[thatSide]] <= number && number < 3) &&
 				sidesWithNumberOfPoints.includes(thatSide) === false) {
 
 				amiibo.stone.sidesPoints[sidesNames[thatSide]] += 1;
@@ -139,11 +140,23 @@ function DefineAmiiboSidesPoints (amiibo) {
 
 function RotateAmiiboSidesPoints(amiibo, baseAmiibo, rotationType) {
 	switch (rotationType) {
+		case '90deg':
+			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['East'];
+			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['South'];
+			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['West'];
+			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['North'];
+			break;
 		case '180deg':
 			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['South'];
 			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['West'];
 			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['North'];
 			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['East'];
+			break;
+		case '-90deg':
+			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['West'];
+			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['North'];
+			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['East'];
+			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['South'];
 			break;
 		case 'diagonal':
 			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['East'];
@@ -151,6 +164,7 @@ function RotateAmiiboSidesPoints(amiibo, baseAmiibo, rotationType) {
 			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['West'];
 			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['South'];
 			break;
+		case null:
 		case undefined:
 			console.log(`ERROR: Undefined rotation on "${amiibo.data.name}"`);
 			break;
@@ -161,21 +175,48 @@ function RotateAmiiboSidesPoints(amiibo, baseAmiibo, rotationType) {
 }
 
 function SpecificRotations(amiibo) {
-	if (amiibo.data.name === "Alex") {
-		amiiboList.forEach((character) => {
-			if(character.data.name.startsWith("Steve")) {
-				RotateAmiiboSidesPoints(amiibo, character, 'diagonal');
-				throw BreakException;
-			}
-		});
-	}
+	switch (amiibo.data.name) {
+		case "Alex":
+			amiiboList.forEach((character) => {
+				if(character.data.name.startsWith("Steve")) {
+					RotateAmiiboSidesPoints(amiibo, character, 'diagonal');
+					throw BreakException;
+				}
+			});
+			break;
 
-	if (amiibo.data.name === "Pyra") {
-		amiiboList.forEach((character) => {
-			if(character.data.name.startsWith("Mythra")) {
-				RotateAmiiboSidesPoints(amiibo, character, 'diagonal');
-			}
-		})
+		case "Pyra":
+			amiiboList.forEach((character) => {
+				if(character.data.name.startsWith("Mythra")) {
+					RotateAmiiboSidesPoints(amiibo, character, 'diagonal');
+					throw BreakException;
+				}
+			});
+			break;
+
+		case "Squirtle":
+		case "Ivysaur":
+		case "Charizard":
+			amiiboList.forEach((character) => {
+				if(character.data.name.startsWith("Pokemon Trainer")) {
+					switch (amiibo.data.name) {
+						case "Squirtle":
+							RotateAmiiboSidesPoints(amiibo, character, '-90deg');
+							break;
+						case "Ivysaur":
+							RotateAmiiboSidesPoints(amiibo, character, '180deg');
+							break;
+						case "Charizard":
+							RotateAmiiboSidesPoints(amiibo, character, '90deg');
+							break;
+					}
+					throw BreakException;
+				}
+			});
+			break;
+
+		default:
+			break;
 	}
 
 	if (amiibo.data.name.endsWith(" - Player 2")) {
