@@ -2,498 +2,487 @@
 	{
 		"characterNumber": 1,
 		"characterName": "Mario",
-		"characterRank": 22,
+		"characterRank": 22
 	},
 	{
 		"characterNumber": 2,
 		"characterName": "Donkey Kong",
-		"characterRank": 68,
+		"characterRank": 68
 	},
 	{
 		"characterNumber": 3,
 		"characterName": "Link",
-		"characterRank": 56,
+		"characterRank": 56
 	},
 	{
 		"characterNumber": 4,
 		"characterName": "Samus",
-		"characterRank": 15,
+		"characterRank": 15
 	},
 	{
 		"characterNumber": 5,
 		"characterName": "Yoshi",
-		"characterRank": 14,
+		"characterRank": 14
 	},
 	{
 		"characterNumber": 6,
 		"characterName": "Kirby",
-		"characterRank": 75,
+		"characterRank": 75
 	},
 	{
 		"characterNumber": 7,
 		"characterName": "Fox",
-		"characterRank": 8,
+		"characterRank": 8
 	},
 	{
 		"characterNumber": 8,
 		"characterName": "Pikachu",
-		"characterRank": 17,
+		"characterRank": 17
 	},
 	{
 		"characterNumber": 9,
 		"characterName": "Luigi",
-		"characterRank": 39,
+		"characterRank": 39
 	},
 	{
 		"characterNumber": 10,
-		"characterName": "Nes",
-		"characterRank": 47,
+		"characterName": "Ness",
+		"characterRank": 47
 	},
 	{
 		"characterNumber": 11,
 		"characterName": "Captain Falcon",
-		"characterRank": 40,
+		"characterRank": 40
 	},
 	{
 		"characterNumber": 12,
 		"characterName": "Jigglypuff",
-		"characterRank": 60,
+		"characterRank": 60
 	},
 
-	//================ Super Smash Bros. ^ ================//
-	//=====================================================//
-	//=====================================================//
-	//=====================================================//
-	//============= Super Smash Bros. Melee v =============//
+	
 
 	{
 		"characterNumber": 13,
 		"characterName": "Peach",
-		"characterRank": 7,
+		"characterRank": 7
 	},
 	{
 		"characterNumber": 14,
 		"characterName": "Bowser",
-		"characterRank": 59,
+		"characterRank": 59
 	},
 	{
 		"characterNumber": 15,
 		"characterName": "Ice Climbers",
-		"characterRank": 51,
+		"characterRank": 51
 	},
 	{
 		"characterNumber": 16,
 		"characterName": "Sheik",
-		"characterRank": 31,
+		"characterRank": 31
 	},
 	{
 		"characterNumber": 17,
 		"characterName": "Zelda",
-		"characterRank": 73,
+		"characterRank": 73
 	},
 	{
 		"characterNumber": 18,
 		"characterName": "Dr. Mario",
-		"characterRank": 78,
+		"characterRank": 78
 	},
 	{
 		"characterNumber": 19,
 		"characterName": "Pichu",
-		"characterRank": 53,
+		"characterRank": 53
 	},
 	{
 		"characterNumber": 20,
 		"characterName": "Falco",
-		"characterRank": 35,
+		"characterRank": 35
 	},
 	{
 		"characterNumber": 21,
 		"characterName": "Marth",
-		"characterRank": 55,
+		"characterRank": 55
 	},
 	{
 		"characterNumber": 22,
 		"characterName": "Young Link",
-		"characterRank": 38,
+		"characterRank": 38
 	},
 	{
 		"characterNumber": 23,
 		"characterName": "Ganondorf",
-		"characterRank": 82,
+		"characterRank": 82
 	},
 	{
 		"characterNumber": 24,
 		"characterName": "Mewtwo",
-		"characterRank": 66,
+		"characterRank": 66
 	},
 	{
 		"characterNumber": 25,
 		"characterName": "Roy",
-		"characterRank": 19,
+		"characterRank": 19
 	},
 	{
 		"characterNumber": 26,
 		"characterName": "Mr. Game & Watch",
-		"characterRank": 3,
+		"characterRank": 3
 	},
 
-	//============= Super Smash Bros. Melee ^ =============//
-	//=====================================================//
-	//=====================================================//
-	//=====================================================//
-	//============= Super Smash Bros. Brawl v =============//
+	
+
 
 	{
 		"characterNumber": 27,
 		"characterName": "Meta Knight",
-		"characterRank": 50,
+		"characterRank": 50
 	},
 	{
 		"characterNumber": 28,
 		"characterName": "Pit",
-		"characterRank": 41,
+		"characterRank": 41
 	},
 	{
 		"characterNumber": 29,
 		"characterName": "Zero Suit Samus",
-		"characterRank": 30,
+		"characterRank": 30
 	},
 	{
 		"characterNumber": 30,
 		"characterName": "Wario",
-		"characterRank": 20,
+		"characterRank": 20
 	},
 	{
 		"characterNumber": 31,
 		"characterName": "Snake",
-		"characterRank": 4,
+		"characterRank": 4
 	},
 	{
 		"characterNumber": 32,
 		"characterName": "Ike",
-		"characterRank": 71,
+		"characterRank": 71
+	},
+
+
+	{
+		"characterNumber": 33,
+		"characterName": "Pokemon Trainer",
+		"characterRank": 24
 	},
 	{
-		"characterName": "Pokemon Trainer",
-		"subCharacters" :
-		[
-			{
-				"characterNumber": 33,
-				"characterName": "Squirtle"
-			},
-			{
-				"characterNumber": 34,
-				"characterName": "Ivysaur"
-			},
-			{
-				"characterNumber": 35,
-				"characterName": "Charizard"
-			}
-		],
-		"characterRank": 24,
+		"characterNumber": 33,
+		"characterName": "Squirtle",
+		"characterRank": 24
 	},
+	{
+		"characterNumber": 34,
+		"characterName": "Ivysaur",
+		"characterRank": 24
+	},
+	{
+		"characterNumber": 35,
+		"characterName": "Charizard",
+		"characterRank": 24
+	},
+
+
 	{
 		"characterNumber": 36,
 		"characterName": "Diddy Kong",
-		"characterRank": 9,
+		"characterRank": 9
 	},
 	{
 		"characterNumber": 37,
 		"characterName": "Lucas",
-		"characterRank": 61,
+		"characterRank": 61
 	},
 	{
 		"characterNumber": 38,
 		"characterName": "Sonic",
-		"characterRank": 2,
+		"characterRank": 2
 	},
 	{
 		"characterNumber": 39,
 		"characterName": "King Dedede",
-		"characterRank": 79,
+		"characterRank": 79
 	},
 	{
 		"characterNumber": 40,
 		"characterName": "Olimar",
-		"characterRank": 33,
+		"characterRank": 33
 	},
 	{
 		"characterNumber": 41,
 		"characterName": "Lucario",
-		"characterRank": 57,
+		"characterRank": 57
 	},
 	{
 		"characterNumber": 42,
 		"characterName": "R.O.B.",
-		"characterRank": 6,
+		"characterRank": 6
 	},
 	{
 		"characterNumber": 43,
 		"characterName": "Toon Link",
-		"characterRank": 46,
+		"characterRank": 46
 	},
 	{
 		"characterNumber": 44,
 		"characterName": "Wolf",
-		"characterRank": 21,
+		"characterRank": 21
 	},
 
-	//============= Super Smash Bros. Brawl ^ =============//
-	//=====================================================//
-	//=====================================================//
-	//=====================================================//
-	//=========== Super Smash Bros. 3DS/Wii U v ===========//
+	
+
 
 	{
 		"characterNumber": 45,
 		"characterName": "Villager",
-		"characterRank": 72,
+		"characterRank": 72
 	},
 	{
 		"characterNumber": 46,
 		"characterName": "Mega Man",
-		"characterRank": 48,
+		"characterRank": 48
 	},
 	{
 		"characterNumber": 47,
 		"characterName": "Wii Fit Trainer",
-		"characterRank": 63,
+		"characterRank": 63
 	},
 	{
 		"characterNumber": 48,
 		"characterName": "Rosalina & Luma",
-		"characterRank": 43,
+		"characterRank": 43
 	},
 	{
 		"characterNumber": 49,
 		"characterName": "Little Mac",
-		"characterRank": 81,
+		"characterRank": 81
 	},
 	{
 		"characterNumber": 50,
 		"characterName": "Greninja",
-		"characterRank": 34,
+		"characterRank": 34
 	},
 	{
 		"characterNumber": 51,
 		"characterName": "Mii Brawler",
-		"characterRank": 36,
+		"characterRank": 36
 	},
 	{
 		"characterNumber": 52,
 		"characterName": "Mii Swordfighter",
-		"characterRank": 76,
+		"characterRank": 76
 	},
 	{
 		"characterNumber": 53,
 		"characterName": "Mii Gunner",
-		"characterRank": 58,
+		"characterRank": 58
 	},
 	{
 		"characterNumber": 54,
 		"characterName": "Palutena",
-		"characterRank": 16,
+		"characterRank": 16
 	},
 	{
 		"characterNumber": 55,
 		"characterName": "Pac-Man",
-		"characterRank": 23,
+		"characterRank": 23
 	},
 	{
 		"characterNumber": 56,
 		"characterName": "Robin",
-		"characterRank": 67,
+		"characterRank": 67
 	},
 	{
 		"characterNumber": 57,
 		"characterName": "Shulk",
-		"characterRank": 25,
+		"characterRank": 25
 	},
 	{
 		"characterNumber": 58,
 		"characterName": "Bowser Jr.",
-		"characterRank": 70,
+		"characterRank": 70
 	},
 	{
 		"characterNumber": 59,
 		"characterName": "Duck Hunt",
-		"characterRank": 65,
+		"characterRank": 65
 	},
 
-	//======================DLC======================//
+	
 
 	{
 		"characterNumber": 60,
 		"characterName": "Ryu",
-		"characterRank": 32,
+		"characterRank": 32
 	},
 	{
 		"characterNumber": 61,
 		"characterName": "Cloud",
-		"characterRank": 13,
+		"characterRank": 13
 	},
 	{
 		"characterNumber": 62,
 		"characterName": "Corrin",
-		"characterRank": 27,
+		"characterRank": 27
 	},
 	{
 		"characterNumber": 63,
-		"characterName": "Bayonneta",
-		"characterRank": 26,
+		"characterName": "Bayonetta",
+		"characterRank": 26
 	},
 
-	//=========== Super Smash Bros. 3DS/Wii U ^ ===========//
-	//=====================================================//
-	//=====================================================//
-	//=====================================================//
-	//============ Super Smash Bros. Ultimate v ===========//
+	
+
 
 	{
 		"characterNumber": 64,
 		"characterName": "Inkling",
-		"characterRank": 49,
+		"characterRank": 49
 	},
 	{
 		"characterNumber": 65,
 		"characterName": "Ridley",
-		"characterRank": 64,
+		"characterRank": 64
 	},
 	{
 		"characterNumber": 66,
 		"characterName": "Simon",
-		"characterRank": 74,
+		"characterRank": 74
 	},
 	{
 		"characterNumber": 67,
 		"characterName": "King K. Rool",
-		"characterRank": 80,
+		"characterRank": 80
 	},
 	{
 		"characterNumber": 68,
 		"characterName": "Isabelle",
-		"characterRank": 69,
+		"characterRank": 69
 	},
 	{
 		"characterNumber": 69,
 		"characterName": "Incineroar",
-		"characterRank": 52,
+		"characterRank": 52
 	},
 
-	//======================DLC======================//
+
 
 	{
 		"characterNumber": 70,
 		"characterName": "Piranha Plant",
-		"characterRank": 77,
+		"characterRank": 77
 	},
 	{
 		"characterNumber": 71,
 		"characterName": "Joker",
-		"characterRank": 10,
+		"characterRank": 10
 	},
 	{
 		"characterNumber": 72,
 		"characterName": "Hero",
-		"characterRank": 44,
+		"characterRank": 44
 	},
 	{
 		"characterNumber": 73,
 		"characterName": "Banjo & Kazooie",
-		"characterRank": 62,
+		"characterRank": 62
 	},
 	{
 		"characterNumber": 74,
 		"characterName": "Terry",
-		"characterRank": 29,
+		"characterRank": 29
 	},
 	{
 		"characterNumber": 75,
 		"characterName": "Byleth",
-		"characterRank": 42,
+		"characterRank": 42
 	},
 	{
 		"characterNumber": 76,
 		"characterName": "Min Min",
-		"characterRank": 12,
+		"characterRank": 12
 	},
 	{
 		"characterNumber": 77,
 		"characterName": "Steve",
-		"characterRank": 1,
+		"characterRank": 1
 	},
 	{
 		"characterNumber": 78,
 		"characterName": "Sephiroth",
-		"characterRank": 37,
+		"characterRank": 37
 	},
 	{
 		"characterNumber": 79,
 		"characterName": "Pyra",
-		"characterRank": 5,
+		"characterRank": 5
 	},
 	{
 		"characterNumber": 80,
 		"characterName": "Mythra",
-		"characterRank": 5,
+		"characterRank": 5
 	},
 	{
 		"characterNumber": 81,
 		"characterName": "Kazuya",
-		"characterRank": 11,
+		"characterRank": 11
 	},
 	{
 		"characterNumber": 82,
 		"characterName": "Sora",
-		"characterRank": 18,
+		"characterRank": 18
 	},
 
-	//============ Super Smash Bros. Ultimate ^ ===========//
-	//=====================================================//
-	//=====================================================//
-	//=====================================================//
-	//================== Echo Fighters v ==================//
+	
+	
 
 	{
 		"characterName": "Dark Samus",
 		"isEcho": true,
 		"basedOn": "Samus",
-		"characterRank": 15,
+		"characterRank": 15
 	},
 	{
 		"characterName": "Daisy",
 		"isEcho": true,
 		"basedOn": "Peach",
-		"characterRank": 7,
+		"characterRank": 7
 	},
 	{
 		"characterName": "Lucina",
 		"isEcho": true,
 		"basedOn": "Marth",
-		"characterRank": 28,
+		"characterRank": 28
 	},
 	{
 		"characterName": "Chrom",
 		"isEcho": true,
 		"basedOn": "Roy",
-		"characterRank": 54,
+		"characterRank": 54
 	},
 	{
 		"characterName": "Dark Pit",
 		"isEcho": true,
 		"basedOn": "Pit",
-		"characterRank": 41,
+		"characterRank": 41
 	},
 	{
 		"characterName": "Ken",
 		"isEcho": true,
 		"basedOn": "Ryu",
-		"characterRank": 45,
+		"characterRank": 45
 	},
 	{
 		"characterName": "Richter",
 		"isEcho": true,
 		"basedOn": "Simon",
-		"characterRank": 74,
-	},
+		"characterRank": 74
+	}
 ]
