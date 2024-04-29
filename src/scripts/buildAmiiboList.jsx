@@ -3,7 +3,7 @@ import tierDetails from '../data/smashBrosTierListSlots.json';
 import charactersList from '../data/smashBrosTierListCharacters.json';
 
 const BreakException = {};
-const sidesNames = ['North', 'East', 'South', 'West'];
+const sidesNames = ['north', 'east', 'south', 'west'];
 const characterNotFound = [];
 export const amiiboList = apiAmiiboList;
 
@@ -141,28 +141,28 @@ function DefineAmiiboSidesPoints (amiibo) {
 function RotateAmiiboSidesPoints(amiibo, baseAmiibo, rotationType) {
 	switch (rotationType) {
 		case '90deg':
-			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['East'];
-			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['South'];
-			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['West'];
-			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['North'];
+			amiibo.stone.sidesPoints['north'] = baseAmiibo.stone.sidesPoints['east'];
+			amiibo.stone.sidesPoints['east'] = baseAmiibo.stone.sidesPoints['south'];
+			amiibo.stone.sidesPoints['south'] = baseAmiibo.stone.sidesPoints['west'];
+			amiibo.stone.sidesPoints['west'] = baseAmiibo.stone.sidesPoints['north'];
 			break;
 		case '180deg':
-			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['South'];
-			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['West'];
-			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['North'];
-			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['East'];
+			amiibo.stone.sidesPoints['north'] = baseAmiibo.stone.sidesPoints['south'];
+			amiibo.stone.sidesPoints['east'] = baseAmiibo.stone.sidesPoints['west'];
+			amiibo.stone.sidesPoints['south'] = baseAmiibo.stone.sidesPoints['north'];
+			amiibo.stone.sidesPoints['west'] = baseAmiibo.stone.sidesPoints['east'];
 			break;
 		case '-90deg':
-			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['West'];
-			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['North'];
-			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['East'];
-			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['South'];
+			amiibo.stone.sidesPoints['north'] = baseAmiibo.stone.sidesPoints['west'];
+			amiibo.stone.sidesPoints['east'] = baseAmiibo.stone.sidesPoints['north'];
+			amiibo.stone.sidesPoints['south'] = baseAmiibo.stone.sidesPoints['east'];
+			amiibo.stone.sidesPoints['west'] = baseAmiibo.stone.sidesPoints['south'];
 			break;
 		case 'diagonal':
-			amiibo.stone.sidesPoints['North'] = baseAmiibo.stone.sidesPoints['East'];
-			amiibo.stone.sidesPoints['East'] = baseAmiibo.stone.sidesPoints['North'];
-			amiibo.stone.sidesPoints['South'] = baseAmiibo.stone.sidesPoints['West'];
-			amiibo.stone.sidesPoints['West'] = baseAmiibo.stone.sidesPoints['South'];
+			amiibo.stone.sidesPoints['north'] = baseAmiibo.stone.sidesPoints['east'];
+			amiibo.stone.sidesPoints['east'] = baseAmiibo.stone.sidesPoints['north'];
+			amiibo.stone.sidesPoints['south'] = baseAmiibo.stone.sidesPoints['west'];
+			amiibo.stone.sidesPoints['west'] = baseAmiibo.stone.sidesPoints['south'];
 			break;
 		case null:
 		case undefined:

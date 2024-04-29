@@ -20,13 +20,13 @@ await axios
 						hasSpecial: false,
 						hasPlayed: false,
 						startTeam: null,
-						teamColor: null,
+						currentTeam: null,
 						sidesPoints: {
 									total: null,
-									North: 0,
-									East: 0,
-									South: 0,
-									West: 0
+									north: 0,
+									east: 0,
+									south: 0,
+									west: 0
 									}
 						},
 				switchIndex: null
