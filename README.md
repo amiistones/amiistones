@@ -1,6 +1,215 @@
-# Amiistones :flower_playing_cards:
+<div align="center">
+
+# :flower_playing_cards: Amiistones :flower_playing_cards:
+Powered by <a href="https://amiiboapi.com" target="_blank">AmiiboAPI</a> - 
+Meet the <a href="https://github.com/orgs/amiistones/people">team</a>!
+
+</div>
+<br/>
 
 Put any description here
+
+## Objects structures
+
+<details>
+	<summary>stage (game's board)</summary>
+
+### `stage`
+
+`stage` is an object that represents the *amiistones* game's board.
+
+***Awaiting for description***
+
+</details>
+
+<details>
+	<summary>amiibo and amiiboList (data)</summary>
+
+### `amiibo` and `amiiboList`
+
+`amiibo` is an element of `amiiboList`. These two objects defines all the data fetched from the api and then display on the *amiistones* game's board.
+
+#### `amiibo`
+
+All classes in the following diagram are actually JavaScript objects (this is just to have a more visual render).
+
+```mermaid
+classDiagram
+    class amiibo {
+        switchIndex: bool
+    }
+
+    class data {
+        amiiboSeries: String
+        character: String
+        gameSeries: String
+        image: String
+        name: String
+        type: String
+        tier: String
+    }
+
+    class releaseDates {
+        au: String
+        eu: String
+        jp: String
+        na: String
+    }
+
+    class stone {
+        hasSpecial: bool
+        hasPlayed: bool
+        startTeam: String
+        currentTeam: String
+    }
+
+    class sidesPoints {
+        total: int
+        north: int
+        east: int
+        south: int
+        west: int
+    }
+    
+    amiibo --> data: data
+    amiibo --> stone: stone
+    data --> releaseDates: release
+    stone --> sidesPoints: sidesPoints
+    
+    amiiboList *-- amiibo
+```
+
+All the fields in the `data` sub-object is from the api (except the `tier` attribute).
+
+<details>
+	<summary>Template</summary>
+
+```jsx
+data: {
+	amiiboSeries: null,
+	character: null,
+	gameSeries: null,
+	image: null,
+	name: null,
+	release: {
+		au: null,
+		eu: null,
+		jp: null,
+		na: null
+		},
+	type: null,
+	tier: "F"
+},
+stone: {
+	hasSpecial: false,
+	hasPlayed: false,
+	startTeam: null,
+	currentTeam: null,
+	sidesPoints: {
+		total: null,
+		North: 0,
+		East: 0,
+		South: 0,
+		West: 0
+	},
+},
+switchIndex: null
+```
+</details>
+
+<details>
+	<summary>Examples</summary>
+
+```jsx
+data: {
+	amiiboSeries: "Super Smash Bros.",
+	character: "Mythra",
+	gameSeries: "Xenoblade Chronicles",
+	image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_22420000-041f0002.png",
+	name: "Mythra",
+	release: {
+		au: "2023-07-21",
+		eu: "2023-07-21",
+		jp: "2023-07-21",
+		na: "2023-07-21"
+		},
+	type: "Figure",
+	tier: "S"
+},
+stone: {
+	hasSpecial: true,
+	hasPlayed: true,
+	startTeam: "red",
+	currentTeam: "blue",
+	sidesPoints: {
+		total: 12,
+		North: 3,
+		East: 3,
+		South: 2,
+		West: 4
+	},
+},
+switchIndex: 79
+```
+
+```jsx
+data: {
+	amiiboSeries: "Super Smash Bros.",
+	character: "Cloud Strife",
+	gameSeries: "Final Fantasy",
+	image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_36000000-02590002.png",
+	name: "Cloud",
+	release: {
+		au: "2017-07-22",
+		eu: "2017-07-21",
+		jp: "2017-07-21",
+		na: "2017-07-21"
+		},
+	type: "Figure",
+	tier: "A+"
+},
+stone: {
+	hasSpecial: false,
+	hasPlayed: false,
+	startTeam: "blue",
+	currentTeam: null,
+	sidesPoints: {
+		total: 10,
+		North: 2,
+		East: 3,
+		South: 2,
+		West: 3
+	},
+},
+switchIndex: null
+```
+</details>
+
+#### `amiiboList`
+
+`amiiboList` is just a **table filled with** `amiibo` **objects**:
+
+```jsx
+[
+	{data, stone, switchIndex},
+	{data, stone, switchIndex},
+	...
+	{data, stone, switchIndex}
+]
+```
+
+</details>
+
+<details>
+	<summary>player and playersList (session data)</summary>
+
+### `player` and `playerList`
+
+`player` is an element of `playersList` these two objects defines the *amiistones* players data (color, points, deck...) of the current game session.
+
+***Awaiting for description***
+
+</details>
 
 ## Stones sides points generation
 
