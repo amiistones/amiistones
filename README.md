@@ -107,10 +107,10 @@ stone: {
 	currentTeam: null,
 	sidesPoints: {
 		total: null,
-		North: 0,
-		East: 0,
-		South: 0,
-		West: 0
+		north: 0,
+		east: 0,
+		south: 0,
+		west: 0
 	},
 },
 switchIndex: null
@@ -143,10 +143,10 @@ stone: {
 	currentTeam: "blue",
 	sidesPoints: {
 		total: 12,
-		North: 3,
-		East: 3,
-		South: 2,
-		West: 4
+		north: 3,
+		east: 3,
+		south: 2,
+		west: 4
 	},
 },
 switchIndex: 79
@@ -175,10 +175,10 @@ stone: {
 	currentTeam: null,
 	sidesPoints: {
 		total: 10,
-		North: 2,
-		East: 3,
-		South: 2,
-		West: 3
+		north: 2,
+		east: 3,
+		south: 2,
+		west: 3
 	},
 },
 switchIndex: null
