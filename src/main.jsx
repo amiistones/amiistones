@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 import { useEffect } from "react";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 
-import { amiiboList } from './scripts/buildAmiiboList.jsx';
+import BuildAmiiboList from './scripts/BuildAmiiboList.jsx';
 
 import App from "./App";
 import Home from "./pages/Home";
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
         path: "/game",
         element: <Game />,
         loader: ({ params }) => {
-          return (amiiboList);
+          return (BuildAmiiboList());
         },
       },
       {
