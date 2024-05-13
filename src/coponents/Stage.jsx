@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import StageContext from './context/StageContext.jsx'
-import StageSizeContext from './context/StageSizeContext.jsx'
+import StageContext from '../context/StageContext.jsx'
+import StageSizeContext from '../context/StageSizeContext.jsx'
 
 
 //Exported function
