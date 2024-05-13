@@ -1,10 +1,51 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import { useEffect } from "react";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+
+import BuildAmiiboList from './scripts/BuildAmiiboList.jsx';
+
+import App from "./App";
+import Home from "./pages/Home";
+import Game from "./pages/Game";
+import StageSettings from "./pages/StageSettings";
+import Guide from "./pages/Guide";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+
 import './index.css'
 
+const router = createBrowserRouter([
+  {
+    element: <App />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/game",
+        element: <Game />,
+        loader: ({ params }) => {
+          return (BuildAmiiboList());
+        },
+      },
+      {
+        path: "/stage-settings",
+        element: <StageSettings />,
+      },
+      {
+        path: "/how-to-play",
+        element: <Guide />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+    ],
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <RouterProvider router={router} />
 )
