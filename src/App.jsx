@@ -1,19 +1,18 @@
-import { useState } from 'react'
 import './App.css'
 import Stage from './Stage'
-import VisualStage from './VisualStage'
+import {StageContextProvider} from './context/StageContext'
+import { ModifiedStageProvider} from './context/CardChange'
+
+
 
 function App() {
-    const [count, setCount] = useState(0)
 
     return (
-        <>
-        <VisualStage/>
-        <Stage
-        x ={8}
-        y ={8}
-        />
-        </>
+        <StageContextProvider>
+        <ModifiedStageProvider>
+        <Stage/>
+        </ModifiedStageProvider>
+        </StageContextProvider>
     )
 }
 
