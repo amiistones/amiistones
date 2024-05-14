@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { useState } from "react";
 import StageContext from './context/StageContext.jsx'
 import StageSizeContext from './context/StageSizeContext.jsx'
 import ModifiedStage from './context/CardChange.jsx'
@@ -10,13 +9,12 @@ import template2 from './template2.jsx'
 //Exported function
 export default function Stage (){
 
-    console.clear()
 
     const {StagePos, updateStagePos} = useContext(StageContext)
     const {currentCard, updateCurrentCard} = useContext(StageContext)
     const {currentStage, updateCurrentStage} = useContext(StageContext)
 
-    const {x,y} = useContext(StageSizeContext)
+    const {x,y,updateSizeX,updateSizeY} = useContext(StageSizeContext)
 
     const {StageModification} = useContext(ModifiedStage)
 
@@ -60,7 +58,7 @@ export default function Stage (){
 
                         /*Throws in the keys of the current selected list*/
                     case 1:
-                        return Object.keys(stageChoseList.at(1))
+   return Object.keys(stageChoseList.at(1))
 
                 
                         /*Throws in the value of the selected key*/
@@ -69,11 +67,10 @@ export default function Stage (){
                 }
         }
 
-    const GetStageSize = Object.values(Object.values({currentStage}).at(0).at(1)).at(0)
-    const keyDataCurrentCard = Object.keys(Object.values(Object.values({currentCard}).at(0).at(0)).at(0))
-    const valDataCurrentCard = Object.values(Object.values(Object.values({currentCard}).at(0).at(0)).at(0))
+    const GetStageSize = currentStage[1].stageTotalSlot
+    const keyDataCurrentCard = Object.keys(currentCard[0].data)
+    const valDataCurrentCard = Object.values(currentCard[0].data)
 
-    console.log(Object.values(Object.values({currentStage}).at(0).at(1)).at(0))
 
     const ShowCard = (
         valDataCurrentCard.map((o,Index)=>{
@@ -84,56 +81,53 @@ export default function Stage (){
                 <td>{valDataCurrentCard.at(Index)}</td>
             </tr>
             )}
-            }))
+        }))
 
-    if (Object.values({x}).at(0)<= 8 && Object.values({y}).at(0) <= 8){
+    //ta bien
+    const StageVisualBase = GetStageSize.map((O, Index)=>{
         return(
-            <React.Fragment>
-            <div>
-            { GetStageSize.map((O, Index)=>{
-                if (Index % Object.values({x}).at(0) === 0){
-                    console.log('worked')
-                    return (
-                        <>
-                        <br></br>
-                        <button key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
-                        </>
-                    )
-                }
-                return(
-                    <>
-                    <button key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
-                    </>
-                )
-            })
-            }
-            </div>
-            <br/>
-
-            <table border='5' width='100%'>
-
-            <tbody>
-            <tr>
-            <th>Selected Card: {valDataCurrentCard.at(1)}</th>
-            </tr>
-            {ShowCard}
-            </tbody>
-
-            </table>
-
-            <table border='2' width='100%'>
-            <tbody>
-            <tr>
-            <th scope='col'>Selected Tile</th>
-            <th scope='col'>{StagePos}</th>
-            </tr>
-            </tbody>
-            </table>
-
-            <button onClick={()=>{updateCurrentCard(template())}}>template1</button>
-            <button onClick={()=>{updateCurrentCard(template2())}}>template2</button>
-            <button onClick={()=>{StageModification()}}>Confirm Changes</button>
-            </React.Fragment>
+            <>
+            {Index % Object.values({x}).at(0) === 0 ? <tr></tr> : <></>}
+            <th><button key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button></th>
+            </>
         )
-    }
+    })
+
+
+if (Object.values({x}).at(0)<= 8 && Object.values({y}).at(0) <= 8){
+    return(
+        <React.Fragment>
+        <table width='100%' cellSpacing='0' align='center'>
+        <tbody>
+        {StageVisualBase}
+        </tbody>
+        </table>
+        <br/>
+
+        <table border='5' width='100%'>
+
+        <tbody>
+        <tr>
+        <th>Selected Card: {valDataCurrentCard.at(1)}</th>
+        </tr>
+        {ShowCard}
+        </tbody>
+
+        </table>
+
+        <table border='2' width='100%'>
+        <tbody>
+        <tr>
+        <th scope='col'>Selected Tile</th>
+        <th scope='col'>{StagePos}</th>
+        </tr>
+        </tbody>
+        </table>
+
+        <button onClick={()=>{updateCurrentCard(template())}}>template1</button>
+        <button onClick={()=>{updateCurrentCard(template2())}}>template2</button>
+        <button onClick={()=>{StageModification()}}>Confirm Changes</button>
+        </React.Fragment>
+    )
+}
 }

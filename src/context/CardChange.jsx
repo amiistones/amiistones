@@ -15,12 +15,26 @@ const ModifiedStageProvider = ({children}) => {
     
 
 
+    const SideChange = (tmpStage, Index) => {
+        console.log('called')
+
+        var newTmpStage = tmpStage
+        console.log(tmpStage[Index].stone.sidesPoints) 
+
+        return newTmpStage
+    }
+
+
+
+
     const modifStage = () => {
-        var stageTotalSlot = Object.values(Object.values({currentStage}).at(0).at(1)).at(0)
+        console.clear()
+        var stageTotalSlot = currentStage[1].stageTotalSlot
 
-        stageTotalSlot[Object.values({StagePos}).at(0)] = Object.values({currentCard}).at(0).at(0)
+        stageTotalSlot[StagePos] = currentCard[0]
+        SideChange(stageTotalSlot,StagePos)
 
-        const tmpResultStage = [Object.values({currentStage}).at(0).at(0),{stageTotalSlot}]
+        const tmpResultStage = [currentStage,{stageTotalSlot}]
         updateCurrentStage(tmpResultStage)
     }
 
