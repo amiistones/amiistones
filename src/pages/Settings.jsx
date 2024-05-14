@@ -5,10 +5,13 @@ import StageSize from '../coponents/StageSize.jsx';
 import StageSizeContext, { StageSizeContextProvider } from '../context/StageSizeContext.jsx';
 
 function Settings () {
+	document.title = "Settings - Amiistones";
 	return (
 		<>
-			<Link to="/">{'< Return Home'}</Link>
 			<h1>Stage Settings</h1>
+			<nav className="returnButton linkButtons">
+				<Link to="/">{'<'}</Link>
+			</nav>
 			<StageSizeContextProvider>
 			<StageSize />
 			</StageSizeContextProvider>
