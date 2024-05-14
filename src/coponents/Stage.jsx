@@ -18,9 +18,7 @@ export default function Stage (){
     const {currentCard, updateCurrentCard} = useContext(StageContext)
     const {currentStage, updateCurrentStage} = useContext(StageContext)
 
-
-    const {x,y} = useContext(StageSizeContext)
-
+    const {minValue, maxValue, x,y, updateSizeX, updateSizeY} = useContext(StageSizeContext)
 
     /*List comprehension function used to navigate through the stage*/
         const listNav = (tile,list,evaluate,mode) => {
@@ -81,7 +79,7 @@ export default function Stage (){
     console.log(GetOffset)
     console.log(NavigateList)
 
-    if (Object.values({x}).at(0)<= 8 && Object.values({y}).at(0) <= 8){
+    if (Object.values({x}).at(0)<= maxValue && Object.values({y}).at(0) <= maxValue){
         return(
             <React.Fragment>
             <div>

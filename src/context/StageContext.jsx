@@ -24,7 +24,6 @@ const StageContextProvider = ({children}) => {
     const [curCard, setCurrentCard] = useState(template())
     const [stagePos, setStagePos] = useState([])
 
-
     /*First initialisation of the stage with placeholder cards inside them*/
     const stage =  []
         stage.push({offset: Object.values({x}).at(0)})
