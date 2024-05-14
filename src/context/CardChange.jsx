@@ -2,9 +2,7 @@ import { createContext, useContext, useState} from 'react';
 import StageContext from './StageContext.jsx'
 
 const ModifiedStage = createContext({
-    isInit: true,
-    updateIsInit: () => {},
-    
+    StageModification: ()=>{},
 })
 
 export default ModifiedStage;
@@ -12,26 +10,26 @@ export default ModifiedStage;
 
 const ModifiedStageProvider = ({children}) => {
 
-    const [Init, setInit] = useState(true)
-
-    const {isInit, updateIsInit} = useContext(ModifiedStage)
-    const {currentCard, updateCurrentCard, currentStage, updateCurrentStage} = useContext(StageContext)
+    const {} = useContext(ModifiedStage)
+    const {StagePos,currentCard, updateCurrentCard, currentStage, updateCurrentStage} = useContext(StageContext)
     
 
 
-    const modifStage = (value, object) => {
-        let tmpstage = {currentStage}
-        tmpstage[value] = object
-        updateCurrentStage({currentStage})
+    const modifStage = () => {
+        var stageTotalSlot = Object.values(Object.values({currentStage}).at(0).at(1)).at(0)
+
+        stageTotalSlot[Object.values({StagePos}).at(0)] = Object.values({currentCard}).at(0).at(0)
+
+        const tmpResultStage = [Object.values({currentStage}).at(0).at(0),{stageTotalSlot}]
+        updateCurrentStage(tmpResultStage)
     }
 
     return(
         <ModifiedStage.Provider value={{
-            isInit: Init,
-                updateIsInit: setInit
-        }}>
+        StageModification: modifStage,
+       }}>
         {children}
         </ModifiedStage.Provider>
     )}
 
-export {ModifiedStageProvider}
+    export {ModifiedStageProvider}
