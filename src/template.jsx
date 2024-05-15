@@ -20,12 +20,12 @@ export default function template (){
                 hasSpecial: false,
                 asSpecial: false,
                 startTeam: null,
-                teamColor: null,
+                teamColor: 'blue',
                 sidesPoints: {
-                    North: 0,
-                    East: 0,
-                    South: 0,
-                    West: 0
+                    North: 1,
+                    East: 2,
+                    South: 3,
+                    West: 4
                 }
             },
             switchindex: {

@@ -1,10 +1,11 @@
 import { createContext, useContext, useState} from 'react';
 import StageContext from './StageContext.jsx'
+import StageSizeContext from './StageSizeContext.jsx'
 
 const ModifiedStage = createContext({
-    isInit: true,
-    updateIsInit: () => {},
-    
+    WhichIndex:[],
+    IndexModif: () => {},
+    StageModification: ()=>{},
 })
 
 export default ModifiedStage;
@@ -12,26 +13,79 @@ export default ModifiedStage;
 
 const ModifiedStageProvider = ({children}) => {
 
-    const [Init, setInit] = useState(true)
+    const [WIndex,setWIndex] = useState([])
 
-    const {isInit, updateIsInit} = useContext(ModifiedStage)
-    const {currentCard, updateCurrentCard, currentStage, updateCurrentStage} = useContext(StageContext)
-    
+    const {} = useContext(ModifiedStage)
+    const {StagePos,currentCard, updateCurrentCard, currentStage, updateCurrentStage} = useContext(StageContext)
+    const {x,y} = useContext(StageSizeContext)
+    const {WhichIndex,IndexModif} = useContext(ModifiedStage)
+
+    const SideChange = (tmpStage, Index) => {
+
+        var newTmpStage = tmpStage
+
+        //check north
+        if (Index >= x) {
+            if (tmpStage[Index].stone.sidesPoints.North > tmpStage[Index-x].stone.sidesPoints.South){
+                tmpStage[Index-x].stone.teamColor = tmpStage[Index].stone.teamColor
+
+            }
+        }
+
+        //check south
+        if (Index < x*(y-1)) {
+            if (tmpStage[Index].stone.sidesPoints.South > tmpStage[Index+x].stone.sidesPoints.North){
+                tmpStage[Index+x].stone.teamColor = tmpStage[Index].stone.teamColor
+            }
+        }
+
+        //check left
+        if (Index%x){
+            if (tmpStage[Index].stone.sidesPoints.West > tmpStage[Index-1].stone.sidesPoints.East){
+                tmpStage[Index-1].stone.teamColor = tmpStage[Index].stone.teamColor
+                
+            }
+        }
+
+        //check right
+        if ((Index+1)%x){
+            if (tmpStage[Index].stone.sidesPoints.East > tmpStage[Index+1].stone.sidesPoints.West){
+                tmpStage[Index+1].stone.teamColor = tmpStage[Index].stone.teamColor
+            
+            }
+        }
+
+        return newTmpStage
+    }
 
 
-    const modifStage = (value, object) => {
-        let tmpstage = {currentStage}
-        tmpstage[value] = object
-        updateCurrentStage({currentStage})
+
+
+    const modifStage = () => {
+        console.clear()
+        if (WhichIndex.includes(StagePos) === false){
+            IndexModif(WhichIndex.push(StagePos))
+            var stageTotalSlot = currentStage[1].stageTotalSlot
+
+            stageTotalSlot[StagePos] = currentCard[0]
+            SideChange(stageTotalSlot,StagePos)
+
+            const tmpResultStage = [currentStage,{stageTotalSlot}]
+            updateCurrentStage(tmpResultStage)
+        }
+        else {
+        console.log("Warning: Can't place a card on an existing card")
+        }
     }
 
     return(
         <ModifiedStage.Provider value={{
-            isInit: Init,
-                updateIsInit: setInit
+            WhichIndex: WIndex,
+                IndexModif: IndexModif,
+                StageModification: modifStage,
         }}>
         {children}
         </ModifiedStage.Provider>
     )}
 
-export {ModifiedStageProvider}
+    export {ModifiedStageProvider}

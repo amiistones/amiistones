@@ -25,14 +25,18 @@ const StageContextProvider = ({children}) => {
     const [stagePos, setStagePos] = useState([])
 
     /*First initialisation of the stage with placeholder cards inside them*/
-    const stage =  []
-        stage.push({offset: Object.values({x}).at(0)})
-        stage.push({
-            stageTotalSlot: Array
-            .apply(null, Array(Object.values({x}).at(0)*Object.values({y}).at(0)))
-            .map(()=>{return Object.entries(template()).at(0).at(1)})
-        })
-    const [curStage, setCurrentStage] = useState(stage)
+        const InitializeStage = () => {
+            const stage =  []
+            stage.push({offset: x})
+            stage.push({
+                stageTotalSlot: Array
+                .apply(null, Array(x*y))
+                .map(()=>{return Object.entries(template()).at(0).at(1)})
+            })
+            return stage
+        }
+
+    const [curStage, setCurrentStage] = useState(InitializeStage())
 
     return(
         <StageSizeContextProvider>
