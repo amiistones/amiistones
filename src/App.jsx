@@ -1,21 +1,19 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+
+import { StageContextProvider } from './context/StageContext'
+import { ModifiedStageProvider} from './context/CardChange'
 
 import './App.css'
 
 function App() {
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/game">Play</Link>
-        <Link to="/stage-settings">Resize stage</Link>
-        <Link to="/how-to-play">How to play ?</Link>
-        <Link to="/about">About</Link>
-        <a href="https://github.com/amiistones/amiistones/" target="_blank">GitHub</a>
-      </nav>
-
       <main>
+        <StageContextProvider>
+        <ModifiedStageProvider>
         <Outlet />
+        </ModifiedStageProvider>
+        </StageContextProvider>
       </main>
     </>
     );

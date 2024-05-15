@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
 import { useState } from "react";
+
+import PropTypes from "prop-types";
+
 import StageContext from '../context/StageContext.jsx'
 import StageSizeContext from '../context/StageSizeContext.jsx'
 
@@ -18,9 +21,7 @@ export default function Stage (){
     const {currentCard, updateCurrentCard} = useContext(StageContext)
     const {currentStage, updateCurrentStage} = useContext(StageContext)
 
-
-    const {x,y} = useContext(StageSizeContext)
-
+    const {minValue, maxValue, x,y, updateSizeX, updateSizeY} = useContext(StageSizeContext)
 
     /*List comprehension function used to navigate through the stage*/
         const listNav = (tile,list,evaluate,mode) => {
@@ -81,27 +82,31 @@ export default function Stage (){
     console.log(GetOffset)
     console.log(NavigateList)
 
-    if (Object.values({x}).at(0)<= 8 && Object.values({y}).at(0) <= 8){
+    const lowerWindowSide = window.innerWidth < window.innerHeight ? "width" : "height"
+    const lowerStageSide = Object.values({x}).at(0) < Object.values({y}).at(0) ? Object.values({x}).at(0) : Object.values({y}).at(0)
+
+    if (Object.values({x}).at(0) <= maxValue && Object.values({y}).at(0) <= maxValue){
         return(
             <React.Fragment>
-            <div>
+            <div className="stage">
+            <table className="gameboard" style={{width: '70' + (lowerWindowSide === "width" ? 'vw' : 'vh'),
+                                                height: '70' + (lowerWindowSide === "width" ? 'vw' : 'vh')
+                                                }}>
             { GetStageSize.map((O, Index)=>{
-                if (Index % Object.values({x}).at(0) === 0){
-                    console.log('worked')
-                    return (
-                        <>
-                        <br></br>
-                        <button key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
-                        </>
-                    )
-                }
                 return(
                     <>
-                    <button key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
+                    {Index % Object.values({x}).at(0) === 0 ? <tr></tr> : <></>}
+                    <td className="stoneTile">
+                        <button style={{'width': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh'),
+                                        'height': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh')
+                                        }}
+                            key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
+                    </td>
                     </>
                 )
             })
             }
+            </table>
 
             <div>
             <p>{StagePos}</p>
