@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
 import { useState } from "react";
+
+import PropTypes from "prop-types";
+
 import StageContext from '../context/StageContext.jsx'
 import StageSizeContext from '../context/StageSizeContext.jsx'
 

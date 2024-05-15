@@ -14,6 +14,9 @@ import NotFound from "./pages/NotFound";
 
 import './index.css'
 
+const teamsColors = {red: "#e04827", green: "#66ce51", blue: "#4894e9", yellow: "#dcc100", default: "#eee"};
+const currentTeams = ["red", "blue"];
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -25,7 +28,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/game",
-        element: <Game />,
+        element: <Game
+                  teamsColors={teamsColors}
+                  currentTeams={currentTeams}/>,
         loader: ({ params }) => {
           return (BuildAmiiboList());
         },
