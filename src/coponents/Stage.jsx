@@ -1,4 +1,8 @@
 import React, { useContext } from "react";
+import { useState } from "react";
+
+import PropTypes from "prop-types";
+
 import StageContext from '../context/StageContext.jsx'
 import StageSizeContext from '../context/StageSizeContext.jsx'
 import ModifiedStage from '../context/CardChange.jsx'
@@ -14,9 +18,8 @@ export default function Stage (){
     const {currentCard, updateCurrentCard} = useContext(StageContext)
     const {currentStage, updateCurrentStage} = useContext(StageContext)
 
-    const {x,y,updateSizeX,updateSizeY} = useContext(StageSizeContext)
-
     const {StageModification} = useContext(ModifiedStage)
+    const {minValue, maxValue, x,y, updateSizeX, updateSizeY} = useContext(StageSizeContext)
 
     /*List comprehension function used to navigate through the stage*/
         const listNav = (tile,list,evaluate,mode) => {
@@ -83,13 +86,20 @@ export default function Stage (){
             )}
         }))
 
-    //ta bien
+    const lowerWindowSide = window.innerWidth < window.innerHeight ? "width" : "height"
+    const lowerStageSide = Object.values({x}).at(0) < Object.values({y}).at(0) ? Object.values({x}).at(0) : Object.values({y}).at(0)
+    
     const StageVisualBase = GetStageSize.map((O, Index)=>{
         return(
-            <>
+            <table>
             {Index % Object.values({x}).at(0) === 0 ? <tr></tr> : <></>}
-            <th><button key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button></th>
-            </>
+            <td className="stoneTile">
+                <button style={{'width': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh'),
+                                'height': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh')
+                                }}
+                    key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
+            </td>
+            </table>
         )
     })
 

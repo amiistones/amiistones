@@ -1,18 +1,21 @@
 import ReactDOM from 'react-dom/client'
 import { useEffect } from "react";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import BuildAmiiboList from './scripts/BuildAmiiboList.jsx';
 
 import App from "./App";
 import Home from "./pages/Home";
 import Game from "./pages/Game";
-import StageSettings from "./pages/StageSettings";
+import Settings from "./pages/Settings";
 import Guide from "./pages/Guide";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 import './index.css'
+
+const teamsColors = {red: "#e04827", green: "#66ce51", blue: "#4894e9", yellow: "#dcc100", default: "#eee"};
+const currentTeams = ["red", "blue"];
 
 const router = createBrowserRouter([
   {
@@ -25,17 +28,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/game",
-        element: <Game />,
+        element: <Game
+                  teamsColors={teamsColors}
+                  currentTeams={currentTeams}/>,
         loader: ({ params }) => {
           return (BuildAmiiboList());
         },
       },
       {
-        path: "/stage-settings",
-        element: <StageSettings />,
+        path: "/settings",
+        element: <Settings />,
       },
       {
-        path: "/how-to-play",
+        path: "/guide",
         element: <Guide />,
       },
       {
