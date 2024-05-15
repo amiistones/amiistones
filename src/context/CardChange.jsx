@@ -2,9 +2,7 @@ import { createContext, useContext, useState} from 'react';
 import StageContext from './StageContext.jsx'
 
 const ModifiedStage = createContext({
-    isInit: true,
-    updateIsInit: () => {},
-    
+    StageModification: ()=>{},
 })
 
 export default ModifiedStage;
@@ -12,26 +10,40 @@ export default ModifiedStage;
 
 const ModifiedStageProvider = ({children}) => {
 
-    const [Init, setInit] = useState(true)
-
-    const {isInit, updateIsInit} = useContext(ModifiedStage)
-    const {currentCard, updateCurrentCard, currentStage, updateCurrentStage} = useContext(StageContext)
+    const {} = useContext(ModifiedStage)
+    const {StagePos,currentCard, updateCurrentCard, currentStage, updateCurrentStage} = useContext(StageContext)
     
 
 
-    const modifStage = (value, object) => {
-        let tmpstage = {currentStage}
-        tmpstage[value] = object
-        updateCurrentStage({currentStage})
+    const SideChange = (tmpStage, Index) => {
+        console.log('called')
+
+        var newTmpStage = tmpStage
+        console.log(tmpStage[Index].stone.sidesPoints) 
+
+        return newTmpStage
+    }
+
+
+
+
+    const modifStage = () => {
+        console.clear()
+        var stageTotalSlot = currentStage[1].stageTotalSlot
+
+        stageTotalSlot[StagePos] = currentCard[0]
+        SideChange(stageTotalSlot,StagePos)
+
+        const tmpResultStage = [currentStage,{stageTotalSlot}]
+        updateCurrentStage(tmpResultStage)
     }
 
     return(
         <ModifiedStage.Provider value={{
-            isInit: Init,
-                updateIsInit: setInit
-        }}>
+        StageModification: modifStage,
+       }}>
         {children}
         </ModifiedStage.Provider>
     )}
 
-export {ModifiedStageProvider}
+    export {ModifiedStageProvider}
