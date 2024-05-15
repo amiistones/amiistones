@@ -28,7 +28,6 @@ const StageContextProvider = ({children}) => {
     /*First initialisation of the stage with placeholder cards inside them*/
         const InitializeStage = () => {
             const stage =  []
-            console.log(x)
             stage.push({offset: x})
             stage.push({
                 stageTotalSlot: Array

@@ -20,7 +20,7 @@ export default function template2 (){
                 hasSpecial: false,
                 asSpecial: false,
                 startTeam: null,
-                teamColor: null,
+                teamColor: 'red',
                 sidesPoints: {
                     North: 4,
                     East: 3,

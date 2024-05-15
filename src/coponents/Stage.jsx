@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import StageContext from './context/StageContext.jsx'
-import StageSizeContext from './context/StageSizeContext.jsx'
-import ModifiedStage from './context/CardChange.jsx'
-import template from './template.jsx'
-import template2 from './template2.jsx'
+import StageContext from '../context/StageContext.jsx'
+import StageSizeContext from '../context/StageSizeContext.jsx'
+import ModifiedStage from '../context/CardChange.jsx'
+import template from '../template.jsx'
+import template2 from '../template2.jsx'
 
 
 //Exported function
