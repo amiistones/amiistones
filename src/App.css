@@ -1,42 +1,181 @@
+:root {
+  --redColorRGBA: rgba(224, 72, 39, 0.75);
+  --greenColorRGBA: rgba(102, 206, 81, 0.75);
+  --blueColorRGBA: rgba(72, 148, 233, 0.75);
+  --yellowColorRGBA: rgba(220, 193, 0, 0.75);
+
+  --redButtonColor: #e04827;
+  --greenButtonColor: #66ce51;
+  --blueButtonColor: #4894e9;
+  --yellowButtonColor: #dcc100;
+  --hoverColor: #499;
+  --buttonBorder: solid 1px;
+  --buttonBottomBorder: solid 5px;
+
+  --redButtonBorder: var(--buttonBorder) var(--redButtonColor);
+  --greenButtonBorder: var(--buttonBorder) var(--greenButtonColor);
+  --blueButtonBorder: var(--buttonBorder) var(--blueButtonColor);
+  --yellowButtonBorder: var(--buttonBorder) var(--yellowButtonColor);
+
+  --redButtonBottomBorder: var(--buttonBottomBorder) var(--redButtonColor);
+  --greenButtonBottomBorder: var(--buttonBottomBorder) var(--greenButtonColor);
+  --blueButtonBottomBorder: var(--buttonBottomBorder) var(--blueButtonColor);
+  --yellowButtonBottomBorder: var(--buttonBottomBorder) var(--yellowButtonColor);
+}
+
 #root {
+  padding: 10px;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.linkButtons a,
+button {
+  background: #eee;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 40px;
+  border-radius: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  padding: 10px 20px;
+  font-size: 120%;
+  margin: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.linkButtons a:hover,
+button:hover:not([disabled]) {
+  color: var(--hoverColor);
+  cursor: pointer;
 }
 
-.card {
-  padding: 2em;
+.linkButtons a:active,
+button:active {
+  border-bottom: solid 1px;
 }
 
-.read-the-docs {
-  color: #888;
+nav.homeButtons {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+}
+
+nav.homeButtons .gameButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin: 0 auto;
+}
+
+.gameButtons a:first-child {
+  font-size: 150%;
+  border: var(--greenButtonBorder);
+  border-bottom: var(--greenButtonBottomBorder);
+}
+
+.gameButtons a:nth-child(2) {
+  font-size: 110%;
+  border: var(--redButtonBorder);
+  border-bottom: var(--redButtonBottomBorder);
+}
+
+nav.homeButtons .miscButtons {
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+}
+
+.miscButtons a:first-child {
+  border: var(--yellowButtonBorder);
+  border-bottom: var(--yellowButtonBottomBorder);
+}
+
+.miscButtons a:nth-child(2) {
+  border: var(--blueButtonBorder);
+  border-bottom: var(--blueButtonBottomBorder);
+}
+
+nav.returnButton a{
+  top: 5vw;
+  left: 5vw;
+  position: absolute;
+  font-size: 90%;
+  padding: 10px 20px;
+  border: var(--yellowButtonBorder);
+  border-bottom: var(--yellowButtonBottomBorder);
+}
+
+div.sizeSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+div.sizeSelector div{
+  display: flex;
+  background: #333;
+  justify-content: space-between;
+  border-radius: 15px;
+  gap: 10px;
+}
+
+div.sizeSelector>p{
+  font-weight: bold;
+  font-size: 110%;
+}
+
+div.sizeSelector div>p{
+  margin: auto;
+  font-weight: bold;
+  font-size: 150%;
+}
+
+div.sizeSelector button {
+  border: var(--greenButtonBorder);
+  border-bottom: var(--greenButtonBottomBorder);
+}
+
+div.sizeSelector button[disabled] {
+  border: var(--redButtonBorder);
+  border-bottom: var(--redButtonBottomBorder);
+}
+
+
+div.scoreDisplay {
+  display: flex;
+  justify-content: space-around;
+  font-size: 150%;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 auto;
+  max-width: 120px;
+}
+
+div.scoreDisplay p {
+  margin: unset;
+}
+
+table.gameboard {
+  margin: 10px auto;
+  background: #555;
+  border-radius: 5px;
+  padding: 5px;
+  max-width: 90vw;
+  max-height: 90vw;
+}
+
+table.gameboard .stoneTile {
+  margin: 1px;
+}
+
+table.gameboard button {
+  border: solid 5px transparent;
+  border-radius: 5px;
+  width: 100%;
 }
