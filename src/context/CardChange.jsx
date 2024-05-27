@@ -26,7 +26,7 @@ const ModifiedStageProvider = ({children}) => {
 
         //check north
         if (Index >= x) {
-            if (tmpStage[Index].stone.sidesPoints.North > tmpStage[Index-x].stone.sidesPoints.South){
+            if (tmpStage[Index].stone.sidesPoints.north > tmpStage[Index-x].stone.sidesPoints.south){
                 tmpStage[Index-x].stone.teamColor = tmpStage[Index].stone.teamColor
 
             }
@@ -34,14 +34,14 @@ const ModifiedStageProvider = ({children}) => {
 
         //check south
         if (Index < x*(y-1)) {
-            if (tmpStage[Index].stone.sidesPoints.South > tmpStage[Index+x].stone.sidesPoints.North){
+            if (tmpStage[Index].stone.sidesPoints.south > tmpStage[Index+x].stone.sidesPoints.north){
                 tmpStage[Index+x].stone.teamColor = tmpStage[Index].stone.teamColor
             }
         }
 
         //check left
         if (Index%x){
-            if (tmpStage[Index].stone.sidesPoints.West > tmpStage[Index-1].stone.sidesPoints.East){
+            if (tmpStage[Index].stone.sidesPoints.west > tmpStage[Index-1].stone.sidesPoints.east){
                 tmpStage[Index-1].stone.teamColor = tmpStage[Index].stone.teamColor
                 
             }
@@ -49,7 +49,7 @@ const ModifiedStageProvider = ({children}) => {
 
         //check right
         if ((Index+1)%x){
-            if (tmpStage[Index].stone.sidesPoints.East > tmpStage[Index+1].stone.sidesPoints.West){
+            if (tmpStage[Index].stone.sidesPoints.east > tmpStage[Index+1].stone.sidesPoints.west){
                 tmpStage[Index+1].stone.teamColor = tmpStage[Index].stone.teamColor
             
             }

@@ -5,9 +5,12 @@ function About() {
 	return (
 		<>
 			<h1>About</h1>
-			<nav className="linkButtons">
-				<a href="https://github.com/amiistones/amiistones/" target="_blank">GitHub</a>
+			<nav className="returnButton linkButtons">
+				<Link to="/">{'<'}</Link>
 			</nav>
+			<div className="linkButtons">
+				<a href="https://github.com/amiistones/amiistones/" target="_blank">GitHub</a>
+			</div>
 		</>
 		);
 }

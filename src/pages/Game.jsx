@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Stage from '../coponents/Stage.jsx';
 
 function Game(props) {
-	document.title = `Game - Amiistones`;
+	document.title = `Game (${props.currentTeams[0]} vs. ${props.currentTeams[1]}) - Amiistones`;
 	
 	const amiiboList = useLoaderData();
 	const { teamsColors, currentTeams } = props;
@@ -21,9 +21,7 @@ function Game(props) {
 		<h1 className="turnDisplay">Team turn: <span style={{color: teamsColors[currentTeamTurn]}}>
 		{currentTeamTurn.charAt(0).toUpperCase() + currentTeamTurn.slice(1)}</span></h1> 
 			<Stage
-			teamsColors={teamsColors}
-			currentTeams={currentTeams}
-			currentTeamTurn={currentTeamTurn}/>
+			teamsColors={teamsColors}/>
 		</>
 		);
 }

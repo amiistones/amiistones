@@ -22,10 +22,10 @@ export default function template (){
                 startTeam: null,
                 teamColor: 'blue',
                 sidesPoints: {
-                    North: 1,
-                    East: 2,
-                    South: 3,
-                    West: 4
+                    north: 1,
+                    east: 2,
+                    south: 3,
+                    west: 4
                 }
             },
             switchindex: {

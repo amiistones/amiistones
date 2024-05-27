@@ -7,7 +7,7 @@ const defaultSizeY = 3;
 
 const StageSizeContext = createContext({
     minValue: 2,
-    maxValue: 8,
+    maxValue: 6,
     maxGap: 3,
     x: localStorage.getItem("sizeX") ? parseInt(localStorage.getItem("sizeX")) : defaultSizeX,
     y: localStorage.getItem("sizeY") ? parseInt(localStorage.getItem("sizeY")) : defaultSizeY,

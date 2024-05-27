@@ -11,7 +11,7 @@ import template2 from '../template2.jsx'
 
 
 //Exported function
-export default function Stage (){
+export default function Stage (props){
 
 
     const {StagePos, updateStagePos} = useContext(StageContext)
@@ -89,29 +89,38 @@ export default function Stage (){
     const lowerWindowSide = window.innerWidth < window.innerHeight ? "width" : "height"
     const lowerStageSide = Object.values({x}).at(0) < Object.values({y}).at(0) ? Object.values({x}).at(0) : Object.values({y}).at(0)
     
-    const StageVisualBase = GetStageSize.map((O, Index)=>{
+    const StageVisualBase = () => {
         return(
-            <table>
-            {Index % Object.values({x}).at(0) === 0 ? <tr></tr> : <></>}
-            <td className="stoneTile">
-                <button style={{'width': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh'),
-                                'height': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh')
-                                }}
-                    key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
-            </td>
+            <table className="gameboard" style={{width: '70' + (lowerWindowSide === "width" ? 'vw' : 'vh'),
+                                                height: '70' + (lowerWindowSide === "width" ? 'vw' : 'vh')
+                                                }}>
+            { GetStageSize.map((O, Index)=>{
+                return(
+                    <>
+                    {Index % Object.values({x}).at(0) === 0 ? <tr></tr> : <></>}
+                    <td className="stoneTile">
+                        <button title={`${O.data.name}: ▲ ${O.stone.sidesPoints.north} ▶ ${O.stone.sidesPoints.east} ▼ ${O.stone.sidesPoints.south} ◀ ${O.stone.sidesPoints.west}`}
+                        style={{'width': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh'),
+                        'height': ('70' / lowerStageSide) + (lowerWindowSide === "width" ? 'vw' : 'vh'),
+                        'border': `solid 5px ${props.teamsColors[O.stone.teamColor]}`
+                        }}
+                            key={Index} onClick={()=>{updateStagePos(Index)}}><img src={JSON.stringify(listNav(Index,0,3,2))}/></button>
+                    </td>
+                    </>
+                )
+            })
+            }
             </table>
         )
-    })
+    }
 
 
-if (Object.values({x}).at(0)<= 8 && Object.values({y}).at(0) <= 8){
+if (Object.values({x}).at(0)<= maxValue && Object.values({y}).at(0) <= maxValue){
     return(
         <React.Fragment>
-        <table width='100%' cellSpacing='0' align='center'>
-        <tbody>
-        {StageVisualBase}
-        </tbody>
-        </table>
+        <div className="stage">
+        {StageVisualBase()}
+        </div>
         <br/>
 
         <table border='5' width='100%'>
@@ -141,3 +150,13 @@ if (Object.values({x}).at(0)<= 8 && Object.values({y}).at(0) <= 8){
     )
 }
 }
+
+Stage.propTypes = {
+    teamsColors: PropTypes.shape({
+        red: PropTypes.string.isRequired,
+        blue: PropTypes.string.isRequired,
+        green: PropTypes.string,
+        yellow: PropTypes.string,
+        default: PropTypes.string.isRequired,
+    }).isRequired
+};

@@ -57,9 +57,10 @@ button:active {
 }
 
 nav.homeButtons {
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
-  gap: 20vh;
+  gap: 10vh;
 }
 
 nav.homeButtons .gameButtons {
